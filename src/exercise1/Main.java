@@ -1,4 +1,8 @@
-import java.util.Iterator;
+package exercise1;
+
+import exercise1.Astar;
+import exercise1.Board;
+
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
@@ -14,14 +18,14 @@ public class Main {
             slates[index_i][index_j] = Integer.valueOf(str.charAt(i)) - 48;
         }
         Board initial = new Board(slates);
-        String s = initial.toString();
-        System.out.println(s);
+//        String s = initial.toString();
+//        System.out.println(s);
         Astar astar_solver = new Astar(initial);
         System.out.println("Minimum steps:");
         System.out.println(astar_solver.getSteps());
-        System.out.println("Solution:");
-        for (Board board : astar_solver.getSolution()) {
-            System.out.println(board.toString());
-        }
+//        System.out.println("Solution:");
+//        for (Board board : astar_solver.getSolution()) {
+//            System.out.println(board.toString());
+//        }
     }
 }

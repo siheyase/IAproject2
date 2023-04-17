@@ -1,8 +1,9 @@
+package exercise1;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-// 定义一个棋盘类，
 public class Board {
     private final int[][] slates;  // 存储9块石板
     private final int n;  // 石板的尺寸：n*n
@@ -85,21 +86,6 @@ public class Board {
         return getHamming() == 0;
     }
 
-    @Override
-    public boolean equals(Object y) {
-        if (y == null) {
-            return false;
-        }
-        if (this == y) {
-            return true;
-        }
-        if (y.getClass() != this.getClass()) {
-            return false;
-        }
-        Board board = (Board) y;
-        return Arrays.deepEquals(slates, board.slates);
-    }
-
     public ArrayList<Board> neighbors() {
         ArrayList<Board> neighbors = new ArrayList<>();
         int x = 0;
@@ -142,40 +128,25 @@ public class Board {
         return templates;
     }
 
-//    // 位子后得到的棋盘
-//    public Board moved() {
-//        Board board = null;
-//        for (int i =0; i < n; i++) {
-//            int x = i / n;
-//            int y = i % n;
-//            int xx = (i + 1) / n;
-//            int yy = (i + 1) % n;
-//            if (slates[x][y] != 0 && slates[xx][yy] != 0) {
-//                board = new Board(moveBoard(x, y, xx, yy));
-//                break;
-//            }
+
+//    public static void main(String[] args) {
+//        int[][] tile = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("input status:");
+//        String str = scanner.next();
+//        scanner.close();
+//
+//        for (int i = 0; i < str.length(); i++) {
+//            int index_j = i % 3;
+//            int index_i = i / 3;
+//            tile[index_i][index_j] = Integer.valueOf(str.charAt(i)) - 48;
 //        }
-//        return board;
+//
+//        Board board = new Board(tile);
+//        String s = board.toString();
+//        System.out.println(s);
+//        System.out.println(board.getHamming());
+//        System.out.println(board.getManhattan());
+//        System.out.println(board.isGoalStatus());
 //    }
-
-    public static void main(String[] args) {
-        int[][] tile = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("input status:");
-        String str = scanner.next();
-        scanner.close();
-
-        for (int i = 0; i < str.length(); i++) {
-            int index_j = i % 3;
-            int index_i = i / 3;
-            tile[index_i][index_j] = Integer.valueOf(str.charAt(i)) - 48;
-        }
-
-        Board board = new Board(tile);
-        String s = board.toString();
-        System.out.println(s);
-        System.out.println(board.getHamming());
-        System.out.println(board.getManhattan());
-        System.out.println(board.isGoalStatus());
-    }
 }
